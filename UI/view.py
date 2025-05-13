@@ -26,6 +26,13 @@ class View(ft.UserControl):
         self._btnCalcola = ft.ElevatedButton(text="Calcola Confini", on_click=self._controller.handleCalcola)
         row1 = ft.Row([self._txtAnno, self._btnCalcola], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
+        self._btnTrova = ft.ElevatedButton(text="Stati raggiungibili", on_click=self._controller.handleTrova, disabled=True)
+        self._ddStati = ft.Dropdown(label="Selezionare uno Stato",
+                                    hint_text="Stato", width=800,
+                                    options=[])
+        self._controller.getStati()
+        row2 = ft.Row([self._ddStati, self._btnTrova], alignment=ft.MainAxisAlignment.CENTER)
+        self._page.controls.append(row2)
         # List View where the reply is printed
         self._txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=False)
         self._page.controls.append(self._txt_result)
